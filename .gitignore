@@ -1,0 +1,92 @@
+# =============================================================================
+# Touch_led  (STM32F103C8T6 / CMake + Ninja / VS Code + STM32 VS Code 扩展)
+# -----------------------------------------------------------------------------
+# 目标：仓库只保留「源码 + 工程配置」，换一台电脑 clone 后重新 Configure/Build
+#       即可使用；构建产物、本机缓存、编辑器临时文件全部忽略。
+#
+# 必须提交（请勿加入忽略列表）：
+#   Core/  Drivers/  applications/（含 u8g2）  cmake/  docs/  tools/
+#   CMakeLists.txt  CMakePresets.json  startup_stm32f103xb.s  STM32F103xx_FLASH.ld
+#   Touch_led.ioc  .mxproject  openocd.cfg  .clang-format  .clangd
+#   .settings/   -> 记录 STM32 扩展所需工具链 bundle 版本（跨平台 lock 文件），
+#                   其他设备据此还原同一套 cmake/ninja/gcc/clangd，请保留。
+#   .vscode/settings.json  .vscode/tasks.json  .vscode/c_cpp_properties.json
+# =============================================================================
+
+# ---------- 构建输出（CMakePresets 输出到 build/<preset>） ----------
+build/
+build-*/
+out/
+cmake-build-*/
+
+# ---------- CMake / Ninja 中间产物 ----------
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CMakeUserPresets.json
+compile_commands.json
+.ninja_deps
+.ninja_log
+*.ninja
+
+# ---------- 编译 / 链接中间文件 ----------
+*.o
+*.obj
+*.d
+*.su
+*.elf
+*.axf
+*.hex
+*.bin
+*.map
+*.lst
+# 如需把发布固件放进仓库，可在此放行，例如：
+# !firmware/*.hex
+# !firmware/*.bin
+
+# ---------- clangd / IntelliSense 索引缓存 ----------
+.cache/
+.vscode/ipch/
+.vscode/.browse.*
+.vscode/*.log
+
+# ---------- VS Code：保留工程共享配置，忽略本机与临时文件 ----------
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/c_cpp_properties.json
+!.vscode/extensions.json
+
+# ---------- 调试器 / 烧录工具日志与个人设置 ----------
+*.log
+openocd-*.log
+JLinkLog.txt
+JLinkSettings.ini
+*.jlink
+
+# ---------- 操作系统垃圾文件 ----------
+.DS_Store
+._*
+.Spotlight-V100/
+.Trashes/
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ---------- 编辑器 / IDE 临时文件 ----------
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+*.rej
+*.tmp
+
+# ---------- Python（tools/ 下若添加辅助脚本） ----------
+__pycache__/
+*.py[cod]
+.venv/
+venv/

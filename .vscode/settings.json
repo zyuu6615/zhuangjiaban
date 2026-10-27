@@ -1,0 +1,38 @@
+{
+    "files.associations": {
+        "*.h": "c"
+    },
+    "editor.formatOnSave": true,
+    "[c]": {
+        "editor.formatOnSave": false,
+    },
+    "cortex-debug.variableUseNaturalFormat": true,
+    "cmake.configureOnOpen": true,
+    "cmake.options.advanced": {
+        "configurePreset": {
+            "statusBarVisibility": "visible",
+        },
+        "build": {
+            "statusBarVisibility": "hidden",
+        },
+        "launch": {
+            "statusBarVisibility": "hidden",
+        },
+        "debug": {
+            "statusBarVisibility": "hidden",
+        },
+    },
+    "cmake.cmakePath": "cube-cmake",
+    "cmake.preferredGenerators": [
+        "Ninja"
+    ],
+    "stm32cube-ide-clangd.path": "cube",
+    "stm32cube-ide-clangd.arguments": [
+        "starm-clangd",
+        "--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc*",
+        "--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-g++*"
+    ],
+    "cmake.configureArgs": [
+        "-DCMAKE_COMMAND=cube-cmake"
+    ],
+}
