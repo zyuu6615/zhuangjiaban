@@ -51,12 +51,7 @@ compile_commands.json
 .vscode/*.log
 
 # ---------- VS Code：保留工程共享配置，忽略本机与临时文件 ----------
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/c_cpp_properties.json
-!.vscode/extensions.json
+.vscode/
 
 # ---------- 调试器 / 烧录工具日志与个人设置 ----------
 *.log
